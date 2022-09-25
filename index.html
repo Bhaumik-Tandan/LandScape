@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .arrow-up {
+        width: 0;
+        height: 0;
+        border-left: 300px solid transparent;
+        border-right: 300px solid transparent;
+
+        border-bottom: 300px solid green;
+        z-index: 1;
+      }
+      .dot {
+        height: 300px;
+        width: 300px;
+        background-color: yellow;
+        border-radius: 50%;
+        display: inline-block;
+        z-index: -3;
+      }
+      .sun {
+        left: 450px;
+        z-index: -1;
+      }
+      .innterSun {
+        height: 250px;
+        width: 250px;
+        background-color: red;
+        border-radius: 50%;
+        z-index: 1;
+        position: relative;
+        top: 50px;
+        left: 25px;
+      }
+      td,
+      tr,
+      table,
+      div {
+        padding: 0px;
+      }
+      body {
+        background-color: aqua;
+      }
+      .cloud {
+        width: 140px;
+        height: 48px;
+
+        background: #f2f9fe;
+        background: linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
+        background: -webkit-linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
+        background: -moz-linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
+        background: -ms-linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
+        background: -o-linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
+
+        border-radius: 40px;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+
+        position: relative;
+        margin: 48px auto 8px;
+        z-index: -8;
+      }
+
+      .cloud:after,
+      .cloud:before {
+        content: "";
+        position: absolute;
+        background: #f2f9fe;
+        z-index: -10;
+      }
+
+      .cloud:after {
+        width: 40px;
+        height: 40px;
+        top: -20px;
+        left: 20px;
+
+        border-radius: 40px;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+        z-index: -8;
+      }
+
+      .cloud:before {
+        width: 72px;
+        height: 72px;
+        top: -36px;
+        right: 20px;
+        border-radius: 80px;
+        -webkit-border-radius: 80px;
+        -moz-border-radius: 80px;
+        z-index: -8;
+      }
+    </style>
+  </head>
+  <body>
+    <table style="position: absolute; left: 50px" id="cloud">
+      <tr>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+      </tr>
+      <tr>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+      </tr>
+      <tr>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+        <td><div class="cloud"></div></td>
+      </tr>
+    </table>
+    <table style="position: absolute; top: 250px">
+      <tr>
+        <td><div class="arrow-up"></div></td>
+        <div class="sun" style="position: absolute; top: 250px">
+          <div class="dot">
+            <div class="innterSun"></div>
+          </div>
+        </div>
+        <td><div class="arrow-up"></div></td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    function runFunction() {
+      const left = document.getElementById("cloud").style.left;
+      let newLeft = parseInt(left.slice(0, -2)) + 1;
+      if (newLeft > 150) newLeft = 50;
+      document.getElementById("cloud").style.left = newLeft + "px";
+    }
+    var t = setInterval(runFunction, 50);
+  </script>
+</html>
